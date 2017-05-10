@@ -12,11 +12,9 @@ import com.github.loongchen.utils.crypto.SHA1;
 
 @Service("wxService")
 public class WxServiceImpl implements IWxService{
-	@Autowired
-	private WeChatConfig wechatConfig;
 	
 	public boolean checkSignature(String signature, String timestamp, String nonce) {
-		String token = wechatConfig.token;
+		String token = WeChatConfig.token;
 		Map<String,String> paramers = new HashMap<String, String>();
 		paramers.put("timestamp", timestamp);
 		paramers.put("nonce", nonce);
