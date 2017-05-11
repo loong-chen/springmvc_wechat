@@ -1,5 +1,6 @@
 *.class
-wx_config.properties
+src/main/resources/wx_config.properties
+target/classes/wx_config.properties
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
