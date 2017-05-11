@@ -53,19 +53,19 @@ public class SHA1 {
      * @return String 排序后的字符串 
      */  
     private static String getOrderByLexicographic(Map<String,String> maps){  
-        return splitParams(lexicographicOrder(getParamsName(maps)));  
+        return splitParams(lexicographicOrder(getParamsValue(maps)));  
     }  
     /** 
-     * 获取参数名称 key 
+     * 获取参数 value 
      * @param maps 参数key-value map集合 
      * @return 
      */  
-    private static List<String> getParamsName(Map<String,String> maps){  
-        List<String> paramNames = new ArrayList<String>();  
+    private static List<String> getParamsValue(Map<String,String> maps){  
+        List<String> paramValues = new ArrayList<String>();  
         for(Map.Entry<String,String> entry : maps.entrySet()){  
-            paramNames.add(entry.getValue());  
+        	paramValues.add(entry.getValue());  
         }  
-        return paramNames;  
+        return paramValues;  
     }  
     
     /** 
@@ -73,9 +73,9 @@ public class SHA1 {
      * @param paramNames 参数名称List集合 
      * @return 排序后的参数名称List集合 
      */  
-    private static List<String> lexicographicOrder(List<String> paramNames){  
-        Collections.sort(paramNames);  
-        return paramNames;  
+    private static List<String> lexicographicOrder(List<String> paramValues){  
+        Collections.sort(paramValues);  
+        return paramValues;  
     }  
     
     /** 

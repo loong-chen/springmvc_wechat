@@ -16,7 +16,7 @@ import com.github.loongchen.service.IWxService;
 
 
 /**
- * 微信公众号入口
+ * 微信公众号入口  在公众号	url服务器上填写改地址：http://xxxx.xxxx.xx(域名)/springMVC_WeChat/msg
  * @author loong
  *
  */
