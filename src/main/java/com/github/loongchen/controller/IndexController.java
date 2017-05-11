@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,7 +26,7 @@ public class IndexController {
 	@Autowired
 	private IWxService wxService;
 	
-	@RequestMapping(value="/msg",method= RequestMethod.GET)
+	@RequestMapping(value="/msg")
 	public void index(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String signature = request.getParameter("signature");
 		System.out.println(signature);
@@ -35,9 +36,13 @@ public class IndexController {
 		boolean isSignature = wxService.checkSignature(signature, timestamp, nonce);
 		System.out.println(isSignature);
 		if(isSignature){
-			String echoStrOut = String.copyValueOf(echostr.toCharArray());
-            response.getWriter().println(echoStrOut);
-            return;
+			if(!StringUtils.isEmpty(echostr)){
+				String echoStrOut = String.copyValueOf(echostr.toCharArray());
+	            response.getWriter().println(echoStrOut);
+	            return;
+			}
+		}else{
+			 response.getWriter().println("非法请求");
 		}
 	}
 	

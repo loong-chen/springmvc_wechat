@@ -12,7 +12,7 @@ public class AccessTokenUtils {
 	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APPID}&secret=${APPSECRET}";
 
 	public static AccessToken getAccessToken() {
-		if (!accessToken.isAvailable()) {
+		if (accessToken==null||!accessToken.isAvailable()) {
 			refreshAccessToken();
 		}
 		return accessToken;
