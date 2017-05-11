@@ -26,7 +26,6 @@ public class WxApiController {
 		try {
 			menuJson = mapper.writeValueAsString(menu);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return wxApiServiceImpl.createMenu(menuJson);

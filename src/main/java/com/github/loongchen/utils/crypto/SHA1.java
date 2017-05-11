@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * SHA1加密算法
+ * 为验证微信签名定制的SHA1加密算法
  * @author loong
  *本类借鉴了 http://blog.csdn.net/u012105931/article/details/51088312#
  */
@@ -53,7 +53,7 @@ public class SHA1 {
      * @return String 排序后的字符串 
      */  
     private static String getOrderByLexicographic(Map<String,String> maps){  
-        return splitParams(lexicographicOrder(getParamsName(maps)),maps);  
+        return splitParams(lexicographicOrder(getParamsName(maps)));  
     }  
     /** 
      * 获取参数名称 key 
@@ -63,7 +63,7 @@ public class SHA1 {
     private static List<String> getParamsName(Map<String,String> maps){  
         List<String> paramNames = new ArrayList<String>();  
         for(Map.Entry<String,String> entry : maps.entrySet()){  
-            paramNames.add(entry.getKey());  
+            paramNames.add(entry.getValue());  
         }  
         return paramNames;  
     }  
@@ -79,20 +79,15 @@ public class SHA1 {
     }  
     
     /** 
-     * 拼接排序好的参数名称和参数值 
+     * 拼接排序好的参数值 
      * @param paramNames 排序后的参数名称集合 
      * @param maps 参数key-value map集合 
      * @return String 拼接后的字符串 
      */  
-    private static String splitParams(List<String> paramNames,Map<String,String> maps){  
+    private static String splitParams(List<String> paramValues){  
         StringBuilder paramStr = new StringBuilder();  
-        for(String paramName : paramNames){  
-            //paramStr.append(paramName);  
-            for(Map.Entry<String,String> entry : maps.entrySet()){  
-                if(paramName.equals(entry.getKey())){  
-                    paramStr.append(String.valueOf(entry.getValue()));  
-                }  
-            }  
+        for(String paramValue : paramValues){  
+        	paramStr.append(paramValue);
         }  
         return paramStr.toString();  
     }  
