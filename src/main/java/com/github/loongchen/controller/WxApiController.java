@@ -30,4 +30,8 @@ public class WxApiController {
 		}
 		return wxApiServiceImpl.createMenu(menuJson);
 	}
+	
+	public String getMenu(){
+		return "";
+	}
 }
