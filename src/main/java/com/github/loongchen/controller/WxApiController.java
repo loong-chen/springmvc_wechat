@@ -31,7 +31,9 @@ public class WxApiController {
 		return wxApiServiceImpl.createMenu(menuJson);
 	}
 	
+	@RequestMapping(value="/API/getMenu",method=RequestMethod.GET)
+	@ResponseBody
 	public String getMenu(){
-		return "";
+		return wxApiServiceImpl.getMenu();
 	}
 }
